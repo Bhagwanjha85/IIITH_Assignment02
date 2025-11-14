@@ -2,7 +2,7 @@
 
 A complete implementation of an LSTM-based Neural Language Model from scratch using PyTorch. This project demonstrates understanding of sequence models, training dynamics, and the concepts of underfitting, overfitting, and optimal model selection.
 
-## 🎯 Project Overview
+## Project Overview
 
 This project implements a character-level language model that learns to predict the next word in a sequence. The model is trained and evaluated under three different scenarios:
 
@@ -10,8 +10,13 @@ This project implements a character-level language model that learns to predict 
 2. **Overfitting**: Large model with no regularization
 3. **Best Fit**: Optimally configured model with proper regularization
 
+## Prerequisites
+Python 3.8 or higher  
+• CUDA-capable GPU (optional, but recommended)  
+• 8GB+ RAM  
+• ~2GB free disk space 
 
-## 🚀 Quick Start
+## Quick open in local system
 
 ### 1. Clone the Repository
 
