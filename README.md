@@ -101,7 +101,7 @@ python evaluate.py --checkpoint outputs/checkpoints/best_model_best_fit.pt \
 ```
 - **Purpose**: Show a model with insufficient capacity
 - **Expected**: High training and validation loss
-- **Parameters**: ~500K
+- **Parameters**: ~860,434
 
 ### Overfitting Scenario
 ```python
@@ -115,7 +115,7 @@ python evaluate.py --checkpoint outputs/checkpoints/best_model_best_fit.pt \
 ```
 - **Purpose**: Demonstrates overfitting without regularization
 - **Expected**: Low training loss, high validation loss
-- **Parameters**: ~8M
+- **Parameters**: ~9,208,594
 
 ### Best Fit Scenario
 ```python
@@ -129,7 +129,7 @@ python evaluate.py --checkpoint outputs/checkpoints/best_model_best_fit.pt \
 ```
 - **Purpose**: Optimal balance between capacity and generalization
 - **Expected**: Balanced training and validation loss
-- **Parameters**: ~2M
+- **Parameters**: ~1,781,010
 
 ## Expected Results
 
@@ -216,7 +216,7 @@ To reproduce results:
 !pip install torch torchvision
 
 # Clone repository
-!git clone https://github.com/yourusername/neural-language-model.git
+!git clone https://github.com/Bhagwanjha85/neural-language-model.git
 %cd neural-language-model
 
 # Upload your dataset to Colab
@@ -241,7 +241,7 @@ The training script automatically generates publication-quality plots showing:
 - Clear separation between scenarios
 - Epoch-wise progression
 
-## Assignment Deliverables Checklist
+## Assignment Deliverables Checklists
 
 -  Complete the PyTorch implementation from scratch
 -  Training script with three scenarios 
