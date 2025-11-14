@@ -1,7 +1,3 @@
-"""
-Utility functions for data processing, tokenization, and batching
-"""
-
 import torch
 from torch.utils.data import Dataset, DataLoader
 import re
@@ -10,9 +6,6 @@ import numpy as np
 
 
 class Vocabulary:
-    """
-    Vocabulary class for tokenization and word-to-index mapping
-    """
 
     def __init__(self, min_freq=2):
         self.min_freq = min_freq
@@ -23,10 +16,10 @@ class Vocabulary:
         # Special tokens
         self.PAD_TOKEN = '<PAD>'
         self.UNK_TOKEN = '<UNK>'
-        self.SOS_TOKEN = '<SOS>'  # Start of sequence
-        self.EOS_TOKEN = '<EOS>'  # End of sequence
+        self.SOS_TOKEN = '<SOS>'  
+        self.EOS_TOKEN = '<EOS>' 
 
-        # Initialize with special tokens
+      
         self.word2idx = {
             self.PAD_TOKEN: 0,
             self.UNK_TOKEN: 1,
@@ -36,18 +29,11 @@ class Vocabulary:
         self.idx2word = {v: k for k, v in self.word2idx.items()}
 
     def build_vocab(self, texts):
-        """
-        Build vocabulary from list of texts
-
-        Args:
-            texts: List of text strings
-        """
-        # Count word frequencies
+        # It Count word's frequencies
         for text in texts:
             words = self.tokenize(text)
             self.word_freq.update(words)
 
-        # Add words that appear at least min_freq times
         idx = len(self.word2idx)
         for word, freq in self.word_freq.items():
             if freq >= self.min_freq and word not in self.word2idx:
@@ -59,47 +45,19 @@ class Vocabulary:
         print(f"Min frequency threshold: {self.min_freq}")
 
     def tokenize(self, text):
-        """
-        Simple tokenization: lowercase and split on whitespace/punctuation
-
-        Args:
-            text: Input text string
-
-        Returns:
-            List of tokens
-        """
-        # Convert to lowercase
+        
+        # Convert into the lowercase
         text = text.lower()
-        # Keep alphanumeric and some punctuation
         text = re.sub(r"[^a-z0-9\s\.\,\!\?\'\-]", "", text)
-        # Split on whitespace
         tokens = text.split()
         return tokens
 
     def encode(self, text):
-        """
-        Convert text to list of indices
-
-        Args:
-            text: Input text string
-
-        Returns:
-            List of word indices
-        """
         tokens = self.tokenize(text)
         return [self.word2idx.get(token, self.word2idx[self.UNK_TOKEN])
                 for token in tokens]
 
     def decode(self, indices):
-        """
-        Convert list of indices back to text
-
-        Args:
-            indices: List of word indices
-
-        Returns:
-            Text string
-        """
         words = [self.idx2word.get(idx, self.UNK_TOKEN) for idx in indices]
         return ' '.join(words)
 
@@ -108,17 +66,8 @@ class Vocabulary:
 
 
 class TextDataset(Dataset):
-    """
-    PyTorch Dataset for language modeling
-    """
 
     def __init__(self, texts, vocab, seq_len=35):
-        """
-        Args:
-            texts: List of text strings
-            vocab: Vocabulary object
-            seq_len: Sequence length for each sample
-        """
         self.vocab = vocab
         self.seq_len = seq_len
 
@@ -132,21 +81,12 @@ class TextDataset(Dataset):
         print(f"Dataset created: {len(self.data)} tokens, {len(self)} sequences")
 
     def __len__(self):
-        # Number of sequences we can create
         return max(0, len(self.data) - self.seq_len)
 
     def __getitem__(self, idx):
-        """
-        Returns a sequence and its target (next word prediction)
-
-        Returns:
-            input: sequence of length seq_len
-            target: sequence of length seq_len (shifted by 1)
-        """
-        # Input: tokens from idx to idx+seq_len
+       
         input_seq = self.data[idx:idx + self.seq_len]
 
-        # Target: tokens from idx+1 to idx+seq_len+1 (next word prediction)
         target_seq = self.data[idx + 1:idx + self.seq_len + 1]
 
         return input_seq, target_seq
@@ -165,7 +105,7 @@ def load_data(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         texts = f.readlines()
 
-    # Remove empty lines
+    # Remove empty lines 
     texts = [text.strip() for text in texts if text.strip()]
 
     print(f"Loaded {len(texts)} lines from {file_path}")
@@ -294,4 +234,5 @@ if __name__ == "__main__":
         print(f"Decoded input: {vocab.decode(input_seq.tolist())}")
         print(f"Decoded target: {vocab.decode(target_seq.tolist())}")
 
-    print("\n✓ Utilities test completed successfully!")
+
+    print("\n Utilities test completed successfully!")
