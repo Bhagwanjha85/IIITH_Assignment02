@@ -36,7 +36,7 @@ Or install individually:
 pip install torch numpy matplotlib tensorboard tqdm
 ```
 
-### 3. Prepare Dataset( Dataset is already given by IIITH)
+### 3. Prepare Dataset( In mycase Dataset is already given by IIITH)
 
 we used my own dataset `data/train.txt`. 
 
