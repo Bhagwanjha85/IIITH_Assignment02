@@ -78,7 +78,7 @@ class LSTMLanguageModel(nn.Module):
             output: Predictions of shape (batch_size, seq_len, vocab_size)
             hidden: Updated hidden state
         """
-        # Get embeddings: (batch_size, seq_len, embedding_dim)
+
         embedded = self.embedding(x)
         embedded = self.dropout_layer(embedded)
 
@@ -193,4 +193,4 @@ if __name__ == "__main__":
         print(f"Output shape: {output.shape}")
         print(f"Hidden state shape: {hidden[0].shape}\n")
 
-    print("✓ Model implementation test completed successfully!")
+    print(" Model implementation test completed successfully!")
