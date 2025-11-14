@@ -248,7 +248,7 @@ The training script automatically generates publication-quality plots showing:
 -  Loss curves (underfit, overfit, best fit)
 -  Perplexity metrics on test set
 -  Model checkpoints
--  detailed README to showcase our project
+-  detailed README here to showcase our project
 -  Reproducible code with fixed seeds
 -  Text generation capability
 
